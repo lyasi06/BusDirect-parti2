@@ -8,3 +8,13 @@ venv/
 # Ignorer les fichiers de logs
 *.log
 node_modules/
+
+
+# Ignorer un fichier JSON spécifique à la racine
+donnees.json
+
+# Ignorer un fichier JSON situé dans un sous-dossier spécifique
+config/secrets.json
+
+# Ignorer TOUS les fichiers JSON du projet
+*.json
