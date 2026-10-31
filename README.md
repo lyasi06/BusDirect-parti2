@@ -1,36 +1,42 @@
-# BusDirect
+# BusDirect-partie 2
 
-Application web simple pour gérer les réservations de sièges d'un autocar **Safi → Marrakech**.
+Application web de gestion des réservations de bus pour le réseau BusDirect. 
+Ce projet est la Partie 2, développée de manière modulaire avec JavaScript (Modules ES6).
 
 ## Fonctionnalités
 
-- Afficher les 20 sièges (libre / occupé)
-- Réserver un siège (choix du siège ou automatique)
-- Modifier une réservation (nom ou siège)
-- Supprimer une réservation
-- Afficher les places disponibles, les places occupées et la recette (80 DH par place)
-- Sauvegarder les données avec le localStorage
+- Chargement des trajets depuis `trips.json` via `fetch`.
+- Sauvegarde des données dans le `localStorage`.
+- Affichage dynamique des cartes de trajets et statistiques (Recette/Passagers).
+- Calcul des places libres et du statut (Disponible/Complet).
 
 ## Technologies
 - HTML
 - Tailwind CSS
 - JavaScript (DOM)
 - localStorage
+- HTML5: Structure des pages.
+- Tailwind CSS (via CDN) : Pour un design moderne et responsive.
+- JavaScript (ES6 Modules) : Logique de l'application, manipulation du DOM, fetch API.
 
-## Lancer le projet
 
-1. Télécharger ou cloner le projet
-2. Ouvrir `index.html` dans le navigateur
+## Structure
+- `index.html` : Liste des trajets.
+- `cabine.html` : Gestion des sièges d'un trajet.
+- `js/` : Code séparé (`store.js`, `render.js`, `reservations.js`, `main-trajets.js`).
 
 ## Tâches réalisées
+#Jour 1 - Préparation
 
-- Création de la page HTML
-- Design avec Tailwind CSS
-- Affichage dynamique des sièges
-- Formulaires : réserver, modifier, supprimer
-- Messages d'erreur et de succès
-- Sauvegarde avec localStorage
-- Publication sur GitHub
+Création des branches Git (partie-2, feature/...).
+Création de l'arborescence (data/, js/)
+Configuration des modules JS (import/export) et test de base.
+
+#Jour 2 - Données
+
+Récupération des données depuis trips.json avec fetch.
+Sauvegarde des données dans le localStorage.
+Fonction initialiser() pour gérer le chargement.
 
 ## Commandes Git utilisées
 
