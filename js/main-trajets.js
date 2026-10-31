@@ -5,6 +5,7 @@ import { savetEMP } from "./store.js";
 async function afficher()
 {
     const trips = await savetEMP();
-    console.table(trips);
+    trajetsrendrer(trips);
+    renderStatistiques(trips); 
 }
 afficher();
