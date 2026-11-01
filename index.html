@@ -10,7 +10,7 @@
 </head>
   <body class="min-h-screen bg-slate-100 text-slate-900 flex flex-col">
 
-  <header class="border-b-4  bg-slate-900 text-white">
+  <header class="border-b-4 bg-slate-900 text-white">
     <div class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-5 sm:flex-row sm:items-center sm:justify-between">
       
        <h1 class="text-2xl font-bold md:text-3xl text-amber-200">
@@ -18,19 +18,19 @@
          <strong><span class="text-blue-600 text-xl">Réseau national<span><span class="text-white text-xl"> ⮕</span><span class="text-yellow-500 text-xl">  · 20 trajets</span></strong>
     </div>
     </header>
-    <main class="grow">
-      <section class="grid grid-cols-1 justify-center items-center gap-4 sm:grid-cols-3">
-      <div class="border-2  border-slate-300 bg-white rounded-lg h-28 w-96 p-7 ml-72">
+    <main class="grow max-w-7xl mx-auto w-full px-4 py-8 overflow-x-hidden">
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div class="border-2  border-slate-300 bg-white rounded-lg p-7">
         <p class="text-sm  text-slate-700">Recette totale du réseau</p>
-        <p id="disponible" class="text-3xl  font-bold text-emerald-700">0 DH</p>
+        <p id="recette" class="text-3xl  font-bold text-emerald-700">0 DH</p>
       </div>
       
-      <div class="border-2 ml-80 w-96 border-slate-300 bg-white rounded-lg h-28 p-7 m-5">
+      <div class="border-2 border-slate-300 bg-white rounded-lg p-7">
         <p class="text-sm  text-slate-700">Passagers du réseau</p>
-        <p id="recette" class="text-3xl font-bold">0</p>
+        <p id="disponible" class="text-3xl font-bold">0</p>
       </div>
     </section>
-    <section class="rounded-xl border h-76 m-7 border-slate-300 bg-white p-4 shadow-sm sm:p-6">
+    <section class="rounded-xl border m-7 border-slate-300 bg-white p-4 shadow-sm sm:p-6">
     <form>
       <div>
       <strong><label for="recherch">Rechercher une ville:</label></strong>
@@ -41,14 +41,14 @@
       <strong><label for="status">Statut</label></strong>
       <select name="status" id="status" class="w-full rounded-lg border border-slate-500 bg-white px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
       <label for="status">Statut</label>
-        <option value="1">Tous</option>
-        <option value="2">Disponible</option>
-        <option value="3">Complet</option>
+        <option value="tous">Tous</option>
+        <option value="disponible">Disponible</option>
+        <option value="Complet">Complet</option>
       </select>
       </div>
     </form>
   </section>
-    <section id="listeTrajets" class="rounded-xl border h-76 m-7 border-slate-300 bg-white p-4 shadow-sm sm:p-6">
+    <section id="listeTrajets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       </section>
       <nav id="pagination" class="flex justify-center gap-2"></nav>
       
