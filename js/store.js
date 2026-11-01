@@ -3,19 +3,28 @@ export function save(trips){
     localStorage.setItem("trips", JSON.stringify(trips));
 }
 
-export async function savetEMP() {
-    const savedonner = localStorage.getItem("trips");
-    if(savedonner){
-        return JSON.parse(savedonner);
-    }
+export function savehh(){
 
-try{
-    const reponse = await fetch("./data/trips.json");
-    const trips = await reponse.json();
+    const saveget = localStorage.getItem("trips")
+if (saveget){
+    console.log("donner charge depuit localstorage");
+    return Promise.resolve(JSON.parse(saveget));
+}
+console.log("chargement depuit trips.json");
+
+return fetch("./data/trips.json")
+.then(response =>{
+    if(!response.ok){
+        throw new Error("Error de chargemnet");
+    }
+    return response.json();
+})
+.then(trips =>{
     save(trips);
     return trips;
-}
-catch (error){
+})
+.catch(error => {
+    console.error("errur: error");
     return [];
-}
+})
 }

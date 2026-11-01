@@ -1,11 +1,10 @@
 // import {test} from "./store.js";
 // test(); 
 
-import { savetEMP } from "./store.js";
-async function afficher()
-{
-    const trips = await savetEMP();
+import { trajetsrendrer, rederStatistique } from "./render.js";
+import {savehh} from "./store.js";
+
+savehh().then(trips =>{
     trajetsrendrer(trips);
-    renderStatistiques(trips); 
-}
-afficher();
+    rederStatistique(trips);
+})
