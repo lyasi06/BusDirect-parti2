@@ -4,7 +4,6 @@ export function save(trips){
 }
 
 export function savehh(){
-
     const saveget = localStorage.getItem("trips")
 if (saveget){
     console.log("donner charge depuit localstorage");
@@ -27,4 +26,13 @@ return fetch("./data/trips.json")
     console.error("errur: error");
     return [];
 })
+}
+
+
+export function getTrips(){
+    const data = localStorage.getItem("trips");
+    if (data){
+        return JSON.parse(data);
+    }
+    return [];
 }
