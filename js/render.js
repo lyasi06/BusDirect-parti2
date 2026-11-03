@@ -49,6 +49,13 @@ trips.forEach(trip => {
       </div>
       `
 });
+if(trips.length === 0){
+   container.innerHTML +=`
+   <div class="col-span-full flex flex-col items-center justify-center p-8 bg-white rounded-xl shadow text-center">
+            
+            <p class="text-base font-semibold text-gray-700">Aucun résultat trouvé</p>
+        </div>;`
+}
 }
 export function rederStatistique(trips){
     const passagers = document.querySelector("#disponible");

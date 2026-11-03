@@ -1,17 +1,20 @@
 // import {test} from "./store.js";
 // test(); 
 
-import { trajetsrendrer, rederStatistique } from "./render.js";
+import {rederStatistique } from "./render.js";
 import {savehh} from "./store.js";
-
+import {handleFilter, initialisePagination} from "./filter.js"
 savehh().then(trips =>{
-    trajetsrendrer(trips);
+    // trajetsrendrer(trips);
+    initialisePagination(trips);
     rederStatistique(trips);
 })
 
-import {handleFilter} from "./filter.js"
+
 const searchCity = document.getElementById("recherch");
 const searchSelector = document.getElementById("status");
 
 searchCity.addEventListener("input", handleFilter);
 searchSelector.addEventListener("change", handleFilter);
+
+
