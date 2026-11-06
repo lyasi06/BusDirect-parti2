@@ -301,6 +301,7 @@ function supprimerReservation() {
       return;
     }
 
+    
     const index = Number(selectDelete.value);
     names[index] = "";
     // saveNames();
@@ -316,6 +317,80 @@ function supprimerReservation() {
   });
   refreshListssuprimer();
 }
+
+
+function gererAttente() {
+  const formAttente = document.querySelector("#form-attente");
+  if(!formAttente){
+    return;
+  }
+  const inputNom = formAttente.querySelector("#Nom-dupassager"); 
+  const inputTel = formAttente.querySelector("#Téléphone"); 
+  const displayDiv = document.querySelector("#display-attente");
+
+  if (!displayDiv){
+    return;
+  } 
+
+  window.renderAttente = function() {
+    displayDiv.innerHTML = "";
+    if (!trip.waitingList) trip.waitingList = [];
+
+    trip.waitingList.forEach((p, i) => {
+      displayDiv.innerHTML += `
+        <div class="flex justify-between items-center bg-slate-50 p-2 rounded border">
+          <span>${i + 1}. ${p.name}</span>
+          <button data-index="${i}" class="btn-retirer text-rose-600 font-bold hover:underline">Retirer</button>
+        </div>
+      `;
+    });
+  };
+
+  formAttente.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const nom = inputNom.value.trim();
+    const tel = inputTel.value.trim();
+    
+    document.querySelector("#err-nom-att").textContent = "";
+    document.querySelector("#err-tel-att").textContent = "";
+
+    const errNom = formAttente.querySelector("#err-nom-att");
+    const errTel = formAttente.querySelector("#err-tel-att");
+    const erreurTel = validerTelephone(trip, tel); 
+    if (!nom) {
+      if(errNom){
+        errNom.textContent = "Nom obligatoir";
+      }
+      return;
+    }
+    if (erreurTel) {
+      if(errTel){
+        errTel.textContent = erreurTel;
+      }
+      return;
+    }
+
+    trip.waitingList = [...trip.waitingList, { name: nom, phone: tel }]; 
+    save(allTrips);
+    
+    inputNom.value = "";
+    inputTel.value = "";
+    window.renderAttente();
+  });
+
+  displayDiv.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-retirer")) {
+      const index = Number(e.target.getAttribute("data-index"));
+      trip.waitingList = trip.waitingList.filter((_, i) => i !== index);
+      save(allTrips);
+      window.renderAttente();
+    }
+  });
+
+  window.renderAttente();
+}
+
+
 
 const njiboId = Number(new URLSearchParams(location.search).get("id"));
 
@@ -335,4 +410,8 @@ savehh().then(function (trips) {
   updateSelectOptions();
   modifierReservation();
   supprimerReservation();
+
+   gererAttente();
 });
+
+

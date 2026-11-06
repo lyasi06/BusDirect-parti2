@@ -219,20 +219,23 @@
               <button id="btnSupprimer" type="submit" class="w-full rounded-lg px-4 py-2 font-semibold text-white focus:outline-none focus:ring-2 focus:ring-offset-2 bg-orange-700 hover:bg-orange-800 focus:ring-orange-700">Supprimer</button>
             </form>
             </section>
-            <section class="rounded-xl border h-72 border-slate-300 bg-white p-4 shadow-sm sm:p-6">
+            <section id="section-attente" class="rounded-xl border h-auto border-slate-300 bg-white p-4 shadow-sm sm:p-6">
         <p class="text-xl pb-4 font-bold">Liste d'attente</p>
         <form id="form-attente">
           <div class="pb-2">
           <label for="Nom-dupassager">Nom du passager</label>
           <input type="text" name="Nom du passager" id="Nom-dupassager" placeholder="EX: votre nom et prenom"
           class="w-full rounded-lg border border-slate-500 bg-white px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
-          </div>
+          <p id="err-nom-att" class="text-xs text-rose-600 mt-1"></p>
+        </div>
           <div class="pb-3">
             <label for="Téléphone">Téléphone</label>
             <input type="tel" name="Téléphone" id="Téléphone" placeholder="06XXXXXXXX ou 07XXXXXXXX" class="w-full rounded-lg border border-slate-500 bg-white px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
               </div>
+              <p id="err-tel-att" class="text-xs text-rose-600 mt-1"></p>
               <button type="submit" class="w-full rounded-lg px-4 py-2 font-semibold text-white focus:outline-none focus:ring-2 focus:ring-offset-2 bg-blue-700 hover:bg-blue-800 focus:ring-blue-700">Inscrire en list d'attente</button>
           </form>
+          <div id="display-attente" class="mt-4 space-y-2 text-sm"></div>
           </section>
       </div>
       </div>
