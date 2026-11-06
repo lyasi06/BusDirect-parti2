@@ -249,7 +249,7 @@ selectPass.addEventListener("change", function(){
     }
 
     const seatToUpdate = newSeat !== "" ? (parseInt(newSeat)) : (index + 1);
-    const resToUpdate = trip.reservations.find(r => r.seat === (index + 1)); // الحجز القديم
+    const resToUpdate = trip.reservations.find(r => r.seat === (index + 1)); 
     if (resToUpdate) {
       resToUpdate.phone = inputNewTel.value.trim(); 
       if (newSeat !== "") resToUpdate.seat = seatToUpdate; 

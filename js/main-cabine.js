@@ -3,9 +3,9 @@ import {savehh} from "./store.js"
 const depart = document.getElementById("depart");
 const arriver = document.getElementById("arriver");
 const available = document.getElementById("available");
-const occupied = document.getElementById("occupées");
-const revenue = document.getElementById("recette");
-const seats = document.querySelectorAll("#seats article");
+// const occupied = document.getElementById("occupées");
+// const revenue = document.getElementById("recette");
+// const seats = document.querySelectorAll("#seats article");
 const boxsnda9 = document.getElementById("seats");
 
 const njiboId = Number(new URLSearchParams(location.search).get("id"));
