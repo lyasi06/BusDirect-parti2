@@ -3,7 +3,8 @@
 Application web de gestion des réservations de bus pour le réseau BusDirect. 
 Ce projet est la Partie 2, développée de manière modulaire avec JavaScript (Modules ES6).
 
-## Fonctionnalités
+## Ce que j'ai réalisé
+J'ai découpé le travail en 11 challenges répartis sur 8 jours. Voici les principales fonctionnalités développées :
 
 - Chargement des trajets depuis `trips.json` via `fetch`.
 - Sauvegarde des données dans le `localStorage`.
