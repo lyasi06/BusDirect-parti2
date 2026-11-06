@@ -1,6 +1,7 @@
 import { savehh, save } from "./store.js";
 import { VIP, prixSiege, recetteTrajet } from "./reservations.js";
 import {validerTelephone, validerModification} from "./validators.js";
+import { rederStatistique } from "./render.js";
 
 const seats = document.querySelectorAll("#seats article");
 const available = document.querySelector("#available");
@@ -301,20 +302,44 @@ function supprimerReservation() {
       return;
     }
 
-    
-    const index = Number(selectDelete.value);
-    names[index] = "";
+    const freeSeat = Number(selectDelete.value) + 1;
+    names[freeSeat - 1] = "";
+    trip.reservations = trip.reservations.filter( r => r.seat !== freeSeat);
+
+    if(trip.waitingList && trip.waitingList.length > 0){
+      const [premier, ...reste] = trip.waitingList;
+
+      trip.reservations.push({ seat: freeSeat, name: premier.name, phone: premier.phone});
+      names[freeSeat - 1] = premier.name;
+      trip.waitingList = reste;
+      
+      afficherMsgDelete(`${premier.name} a obtene le siege ${freeSeat}`, "green");
+    // const index = Number(selectDelete.value);
+    // names[index] = "";
     // saveNames();
-    save(allTrips);
-    updatePage();
-    updateSelectOptions();
-    refreshListssuprimer();
+  }
+  else{
     afficherMsgDelete("Réservation supprimée avec succès!", "green");
+  }
+  // const index = Number(selectDelete.value);
+  // names[index] = "";
+  // // saveNames();
+  save(allTrips);
+  updatePage();
+  updateSelectOptions();
+  refreshListssuprimer();
+  window.renderAttente();
+    // save(allTrips);
+    // updatePage();
+    // updateSelectOptions();
+    // refreshListssuprimer();
+   
   });
 
   form.addEventListener("submit", function () {
     setTimeout(refreshListssuprimer, 100);
   });
+
   refreshListssuprimer();
 }
 
