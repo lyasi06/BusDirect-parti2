@@ -75,8 +75,7 @@ git push -u origin main
 - W3Schools
 - YouTube
 - Google
-
-- 
+   
 ## Remarques
 -Le projet est lancé avec Live Server (nécessaire pour fetch et les Modules).
 -Toutes les données sont sauvegardées dans le localStorage, donc les réservations sont conservées même après actualisation de la page.
