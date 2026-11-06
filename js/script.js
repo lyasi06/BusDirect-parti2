@@ -1,6 +1,7 @@
 import { savehh, save } from "./store.js";
 import { VIP, prixSiege, recetteTrajet } from "./reservations.js";
-import {validerTelephone} from "./validators.js";
+import {validerTelephone, validerModification} from "./validators.js";
+
 const seats = document.querySelectorAll("#seats article");
 const available = document.querySelector("#available");
 const occupied = document.querySelector("#occupées");
@@ -173,6 +174,7 @@ function modifierReservation() {
   const selectPass = document.querySelector("#Passager");
   const inputNewName = document.querySelector("#Nouveau-nom");
   const selectNewSeat = document.querySelector("#Nouveau-siège");
+  const inputNewTel = document.getElementById("niv-Téléphone");
 
   function refreshLists() {
     selectPass.innerHTML = '<option value="">Choisir un passager...</option>';
@@ -199,7 +201,17 @@ function modifierReservation() {
       msgModify.className = "";
     }, 3000);
   }
-
+selectPass.addEventListener("change", function(){
+    const seatSelected = Number(this.value);
+    if(!seatSelected)
+      return;
+    const res = trip.reservations.find(r => r.seat === seatSelected);
+    if(res){
+      inputNewName.value = res.name;
+      inputNewTel.value = res.phone;
+      selectNewSeat.value = ""; 
+    }
+  });
   btnModify.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -211,11 +223,18 @@ function modifierReservation() {
     const index = Number(selectPass.value);
     const newName = inputNewName.value.trim();
     const newSeat = selectNewSeat.value;
+    const newTel = inputNewTel.value.trim();
 
-    if (newName === "" && newSeat === "") {
-      afficherlemessage("Entrer un nouveau nom ou choisir un siège!", "rose");
+    const erreurTel = validerModification(trip, newTel, (index + 1)); 
+    if (erreurTel) {
+      afficherlemessage(erreurTel, "rose");
       return;
     }
+
+    // if (newName === "" && newSeat === "") {
+    //   afficherlemessage("Entrer un nouveau nom ou choisir un siège!", "rose");
+    //   return;
+    // }
 
     if (newName !== "") {
       names[index] = newName;
@@ -228,7 +247,13 @@ function modifierReservation() {
       names[newIndex] = currentName;
     }
 
-    saveNames();
+    const seatToUpdate = newSeat !== "" ? (parseInt(newSeat)) : (index + 1);
+    const resToUpdate = trip.reservations.find(r => r.seat === (index + 1)); // الحجز القديم
+    if (resToUpdate) {
+      resToUpdate.phone = inputNewTel.value.trim(); 
+      if (newSeat !== "") resToUpdate.seat = seatToUpdate; 
+    }
+    save(allTrips);
 
     inputNewName.value = "";
     updatePage();
