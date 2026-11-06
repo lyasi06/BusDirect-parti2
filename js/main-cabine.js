@@ -1,5 +1,5 @@
 import {savehh} from "./store.js"
-import {VIP, prixSiege, recetteTrajet} from "./reservations.js"
+// import {VIP, prixSiege, recetteTrajet} from "./reservations.js"
 const depart = document.getElementById("depart");
 const arriver = document.getElementById("arriver");
 const available = document.getElementById("available");
