@@ -303,7 +303,8 @@ function supprimerReservation() {
 
     const index = Number(selectDelete.value);
     names[index] = "";
-    saveNames();
+    // saveNames();
+    save(allTrips);
     updatePage();
     updateSelectOptions();
     refreshListssuprimer();
