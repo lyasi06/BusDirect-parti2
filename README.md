@@ -51,9 +51,9 @@ git push -u origin main
 
 ## Ressources utilisées
 
-- W3Schools
-- YouTube
-- Google
+- W3Schools.
+- YouTube.
+- Google.
 
 ## Auteur
 ABDERRAHMANE LYASI
