@@ -134,7 +134,7 @@
       </section>
       <div class="flex flex-col gap-6">
 
-      <section class="rounded-xl border h-72 border-slate-300 bg-white p-4 shadow-sm sm:p-6">
+      <section class="rounded-xl border h-90 border-slate-300 bg-white p-4 shadow-sm sm:p-6">
         <p class="text-xl pb-4 font-bold">Réserver une place</p>
         <form id="form-reserve">
           <div class="pb-2">
@@ -142,6 +142,12 @@
           <input type="text" name="Nom du passager" id="Nom-dupassager" placeholder="EX: votre nom et prenom"
           class="w-full rounded-lg border border-slate-500 bg-white px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
           </div>
+          <div class="pb-3">
+            <label for="Téléphone">Téléphone</label>
+          <input type="tel" name="Téléphone" id="Téléphone" placeholder="06XXXXXXXX ou 07XXXXXXXX"
+          class="w-full rounded-lg border border-slate-500 bg-white px-3 py-2 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+          </div>
+          <p id="err-tel" class="text-xs text-rose-600 mt-1"></p>
           <div class="pb-3">
             <label for="reserve-seat">Siège</label>
             <select id="reserve-seat"

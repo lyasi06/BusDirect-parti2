@@ -1,6 +1,6 @@
 import { savehh, save } from "./store.js";
 import { VIP, prixSiege, recetteTrajet } from "./reservations.js";
-
+import {validerTelephone} from "./validators.js";
 const seats = document.querySelectorAll("#seats article");
 const available = document.querySelector("#available");
 const occupied = document.querySelector("#occupées");
@@ -91,6 +91,7 @@ form.addEventListener("submit", function (e) {
 
   const smiya = nameInput.value.trim();
   const choix = seatSelect.value;
+  const tele = document.getElementById("Téléphone").value.trim();
 
   function mse7Message() {
     setTimeout(function () {
@@ -108,7 +109,7 @@ form.addEventListener("submit", function (e) {
 
   let dejaExiste = false;
   for (let i = 0; i < 20; i++) {
-    if (names[i].trim() === smiya) {
+    if (names[i].trim().toLocaleLowerCase() === smiya.toLocaleLowerCase()) {
       dejaExiste = true;
       break;
     }
@@ -118,6 +119,12 @@ form.addEventListener("submit", function (e) {
     msgReserve.textContent = "Cette personne a déjà une réservation!";
     msgReserve.className = "w-full rounded-lg px-4 py-2 font-semibold text-white text-center bg-rose-600 mt-3 block";
     mse7Message();
+    return;
+  }
+
+   const erreurTel = validerTelephone(trip, tele);
+  if (erreurTel) {
+    document.getElementById("err-tel").textContent = erreurTel;
     return;
   }
 
@@ -149,8 +156,9 @@ form.addEventListener("submit", function (e) {
   }
 
   names[index] = smiya;
-  saveNames();
-
+  trip.reservations.push({seat: index + 1, name: smiya, phone: tele});
+  // saveNames();
+  save(allTrips);
   msgReserve.textContent = "Siège " + (index + 1) + " réservé pour " + smiya;
   msgReserve.className = "w-full rounded-lg px-4 py-2 font-semibold text-white text-center bg-emerald-600 mt-3 block";
 
