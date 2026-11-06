@@ -21,9 +21,10 @@ function updatePage() {
   for (let i = 0; i < 20; i++) {
     const smia = seats[i].querySelector("h3");
     const info = seats[i].querySelector("p");
+    const isVIP = VIP(i + 1);
 
     if (names[i] === "") {
-
+      
       seats[i].className = "rounded-lg border border-green-200 bg-white p-2 text-center";
       smia.className = "font-bold text-green-700";
       info.className = "text-xs text-slate-500";

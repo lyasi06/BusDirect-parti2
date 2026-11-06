@@ -6,7 +6,7 @@ export function save(trips){
 export function savehh(){
     const saveget = localStorage.getItem("trips")
 if (saveget){
-    console.log("donner charge depuit localstorage");
+    // console.log("donner charge depuit localstorage");
     return Promise.resolve(JSON.parse(saveget));
 }
 console.log("chargement depuit trips.json");

@@ -16,3 +16,21 @@ export function totalPassagers(trips){
 export function recetteTotale(trips){
     return trips.reduce((total, trip) => total + (trip.reservations.length * trip.price),0);
 }
+
+
+export function VIP(siege){
+    return siege >= 1 && siege <= 4;
+}
+
+export function prixSiege(prixBase, seige){
+    if(VIP(seige)){
+        return Math.round(prixBase * 1.1);
+    }
+    return prixBase;
+}
+
+export function recetteTrajet(trip){
+    return trip.reservations.reduce((total, r)=>{
+        return total + prixSiege(trip.price, r.seat);
+    }, 0);
+}
