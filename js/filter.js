@@ -92,6 +92,3 @@ function addButton(){
         pageprincipal = Number(button.getAttribute("data-page"));
         aficherlespage();
     })
-    
-    
-    
