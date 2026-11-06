@@ -3,7 +3,8 @@
 Application web de gestion des réservations de bus pour le réseau BusDirect. 
 Ce projet est la Partie 2, développée de manière modulaire avec JavaScript (Modules ES6).
 
-## Fonctionnalités
+## Ce que j'ai réalisé
+J'ai découpé le travail en 11 challenges répartis sur 8 jours. Voici les principales fonctionnalités développées :
 
 - Chargement des trajets depuis `trips.json` via `fetch`.
 - Sauvegarde des données dans le `localStorage`.
@@ -54,6 +55,9 @@ git push -u origin main
 - W3Schools
 - YouTube
 - Google
-
+   
+## Remarques
+-Le projet est lancé avec Live Server (nécessaire pour fetch et les Modules).
+-Toutes les données sont sauvegardées dans le localStorage, donc les réservations sont conservées même après actualisation de la page.
 ## Auteur
 ABDERRAHMANE LYASI
